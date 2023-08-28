@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blank Page - RedtechSurvey</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Nunito.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <script src="../jquery/jquery-3.2.1.min.js"></script>
+    <style>
+        .collapsible {
+            background-color: #05106e;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #17524a;
+        }
+
+        .collapsible:after {
+            content: '\002B';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" style="background: var(--bs-info-text-emphasis);">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>RedtechSurvey</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar" >
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="survey"><i class="far fa-list-alt" style="font-size: 14px;"></i><span>Survey</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="table"><i class="fas fa-table" style="font-size: 14px;"></i><span>Table</span></a><a class="nav-link" href="table"><i class="far fa-edit" style="font-size: 14px;"></i><span>make</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-expand bg-white shadow mb-4 topbar static-top navbar-light">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
+                                    <form class="me-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"></a>
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>A new monthly report is ready to download!</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>$290.29 has been deposited into your account!</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 2, 2019</span>
+                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
+                                            </div>
+                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"></a>
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span></div>
+                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar2.jpeg">
+                                                <div class="status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>I have the photos that you ordered last month!</span></div>
+                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar3.jpeg">
+                                                <div class="bg-warning status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
+                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar5.jpeg">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
+                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
+                                            </div>
+                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                    </div>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div>
+                    <div th:each="formulario : ${forms}">
+                        <div th:utext="${formulario}"></div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © RedtechSurvey 2023</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                console.log("Click")
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
+    <!--<script>
+        function procesarFormulario(param) {
+            // Obtener referencia al formulario
+            var formulario = document.getElementById(param);
+
+            // Crear un objeto para almacenar el mapeo de name y value
+            var mapa = {};
+
+            // Obtener todos los elementos de entrada del formulario
+            var elementos = formulario.querySelectorAll("input");
+
+            // Recorrer los elementos y mapear name y value de inputs
+            for (var i = 0; i < elementos.length; i++) {
+                var elemento = elementos[i];
+                if (elemento.name && (elemento.type !== "submit")) {
+                    mapa[elemento.name] = elemento.value;
+                }
+            }
+
+            // Mostrar el mapeo en la consola (puedes hacer lo que quieras con este mapeo)
+            console.log(mapa);
+
+            // Aquí puedes realizar más acciones con el mapeo si es necesario
+        }
+    </script>-->
+    <!--<script>
+        var formData = {}; // Objeto para almacenar los datos de formularios
+
+        function procesarFormulario(param) {
+            // Obtener referencia al formulario
+            var formulario = document.getElementById(param);
+
+            // Crear un objeto para almacenar los datos del formulario
+            var datosFormulario = {};
+
+            // Obtener todos los elementos de entrada del formulario
+            var elementos = formulario.querySelectorAll("input");
+
+            // Recorrer los elementos y mapear name y value de inputs
+            for (var i = 0; i < elementos.length; i++) {
+                var elemento = elementos[i];
+                if (elemento.name && (elemento.type !== "submit")) {
+                    datosFormulario[elemento.name] = elemento.value;
+                }
+            }
+
+            // Generar un ID único basado en la marca de tiempo
+            var formularioId = Date.now();
+
+            // Almacenar los datos del formulario junto con su ID en el objeto formData
+            formData[formularioId] = {
+                formulario: param,
+                data: datosFormulario
+            };
+
+            // Mostrar los datos en la consola
+            console.log("ID del formulario:", formularioId);
+            console.log("Datos del formulario:", datosFormulario);
+
+            // Aquí puedes realizar más acciones con los datos si es necesario
+
+            // Limpiar el formulario
+            formulario.reset();
+        }
+    </script>-->
+    <script>
+        // Abre la base de datos (o crea una si no existe)
+        var request = window.indexedDB.open("miBaseDeDatos", 1);
+        var db;
+
+        request.onupgradeneeded = function(event) {
+            db = event.target.result;
+            var objectStore = db.createObjectStore("formularios", { keyPath: "id", autoIncrement: true });
+            objectStore.createIndex("formulario", "formulario", { unique: false });
+        };
+
+        request.onsuccess = function(event) {
+            db = event.target.result;
+        };
+
+        function procesarFormulario(param) {
+            var formulario = document.getElementById(param);
+            var datosFormulario = {};
+            var elementos = formulario.querySelectorAll("input");
+
+            for (var i = 0; i < elementos.length; i++) {
+                var elemento = elementos[i];
+                if (elemento.name && (elemento.type !== "submit")) {
+                    datosFormulario[elemento.name] = elemento.value;
+                }
+            }
+
+            var transaction = db.transaction(["formularios"], "readwrite");
+            var objectStore = transaction.objectStore("formularios");
+
+            var formData = {
+                formulario: param,
+                data: datosFormulario
+            };
+
+            var request = objectStore.add(formData);
+
+            request.onsuccess = function(event) {
+                formulario.reset();
+            };
+        }
+
+        function show() {
+            var transaction = db.transaction(["formularios"], "readonly");
+            var objectStore = transaction.objectStore("formularios");
+
+            objectStore.openCursor().onsuccess = function(event) {
+                var cursor = event.target.result;
+                if (cursor) {
+                    console.log("Formulario ID:", cursor.key);
+                    console.log("Nombre del formulario:", cursor.value.formulario);
+                    console.log("Datos:", cursor.value.data);
+                    cursor.continue();
+                }
+            };
+        }
+
+    </script>
+
+
+    <script>
+
+        window.addEventListener("load", async function () {
+            if (await verificarConexion() == true) {
+                console.log("Se registro Desconexion");
+                var request = indexedDB.open("desconexion", 1);
+
+                request.onupgradeneeded = function (event) {
+                    var db = event.target.result;
+
+                    // Create an object store for the content
+                    var contentStore = db.createObjectStore("archivo", {keyPath: "nombre"});
+
+                    // Access the content of the current page
+                    var htmlContent = document.documentElement.outerHTML;
+
+                    // Add the HTML content to the object store
+                    contentStore.add({nombre: "survey.html", content: htmlContent});
+                };
+            }
+        });
+
+        function verificarConexion() {
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: "/index.html",
+                    method: "HEAD",
+                    timeout: 5000,
+                    success: function () {
+                        console.log("Conexión exitosa");
+                        resolve(true);
+                    },
+                    error: function () {
+                        console.log("No se pudo conectar al servidor");
+                        resolve(false);
+                    }
+                });
+            });
+        }
+    </script>
+
+    <input type="button"  onclick="show()" value="CLICK">
+</body>
+</html>
