@@ -8,6 +8,7 @@ import org.example.util.BaseControlador;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
@@ -95,6 +96,8 @@ public class Basico extends BaseControlador {
                     int pregunta = Integer.parseInt(ctx.formParam("Pregunta"));
                     int seleccion = Integer.parseInt(ctx.formParam("Seleccion"));
                     int escala = Integer.parseInt(ctx.formParam("Escala"));
+                    List<String> datausertemp = ctx.formParams("userSelect");
+                    System.out.println("Lista:  "+ datausertemp);
                     System.out.println("p:"+pregunta+" s:"+seleccion+" e:"+escala);
                     Form tempform = new Form();
                     ArrayList<Pregunta> preguntas = new ArrayList<>();
@@ -148,8 +151,13 @@ public class Basico extends BaseControlador {
                     tempform.setMispreguntas(preguntas);
                     tempform.setMisselecciones(select);
                     tempform.setMisescalas(escale);
-                    tempform.insertUsuario(UsuarioServices.getInstance().Validacion("cepg0001","123456"));
+                    for (String str: datausertemp
+                         ) {
+                        tempform.insertUsuario(UsuarioServices.getInstance().findByID(str));
+                    }
+                    //tempform.insertUsuario(UsuarioServices.getInstance().Validacion("cepg0001","123456"));
                     FormServices.getInstance().crear(tempform);
+                    ctx.redirect("/survey");
                 });
 
             });

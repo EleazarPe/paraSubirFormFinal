@@ -4,15 +4,18 @@ import io.javalin.Javalin;
 import org.bson.types.ObjectId;
 import org.example.encapsulaciones.Clasificador;
 import org.example.encapsulaciones.DataUser;
+import org.example.encapsulaciones.Usuario;
 import org.example.jsonClassConvert.jsonClasificador;
 import org.example.jsonClassConvert.jsonForm;
 import org.example.jsonClassConvert.jsonPregunta;
 import org.example.services.ClasificadorServices;
+import org.example.services.UsuarioServices;
 import org.example.util.BaseControlador;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
@@ -23,6 +26,19 @@ public class APIRest extends BaseControlador {
 
     @Override
     public void aplicarRutas() {
+        app.get("/alluser", ctx->{
+            List<String> usuarios = new ArrayList<>();
+            for (Usuario us: UsuarioServices.getInstance().find()
+                 ) {
+                usuarios.add(us.getId().toString());
+            }
+            JSONArray jsonArray = new JSONArray(usuarios);
+            ctx.json(jsonArray.toString());
+
+        });
+
+
+
         app.routes(()->{
            path("/apirest",()->{
                get("/{id}", ctx->{

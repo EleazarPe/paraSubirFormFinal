@@ -2,31 +2,38 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
+    <link rel="stylesheet" href="form.css">
     <script src="scriptsMain.js"></script>
+    <script src="../jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<h2>Pregunta:</h2>
-<button id="preguntabtn" onclick="crearPregunta()">Agregar</button>
+<div class="form-container">
+    <h1>Creación de Formulario</h1>
+</div>
 
-<h2>Seleccion:</h2>
-<label for="numero">Cantidad de opciones :</label>
-<input name="numero" id = "cantopt" type="number" value="1" style="width: 40px;" max="100" min="1">
-<button id="seleccionbtn" onclick="crearSeleccion()">Agregar</button>
-
-<h2>Escala:</h2>
-<!--<label for="minimo">Minimo :</label>
-<input type="number" name="minimo">
-<label for="maximo">Maximo :</label>
-<input type="number" name="maximo">
-<label for="pasos">Aumento :</label>
-<input type="number" name="pasos">-->
-<button id="escalabtn" onclick="crearEscala()">Agregar</button>
-
-<!--<input type="range" min="0" max="10" step="0.001" value="0" id="miSlider" oninput="mostrarValor()">
-<span id="valorActual">0</span>
-
--->
+<!--Pregunta-->
+<div class="header-row">
+    <h2>Pregunta:</h2>
+    <button id="preguntabtn" onclick="crearPregunta()">Agregar</button>
+</div>
+<!--Seleccion-->
+<div class="header-row">
+    <h2>Seleccion:</h2>
+    <div class="selection-elements">
+        <!--        <label for="numero">Cantidad de opciones:</label>-->
+        <input name="numero" id="cantopt" type="number" value="1" style="width: 40px; height: 26px;" max="100" min="1">
+        <button id="seleccionbtn" onclick="crearSeleccion()">Agregar</button>
+    </div>
+</div>
+<!--Escala-->
+<div class="header-row">
+    <h2>Escala:</h2>
+    <div class="scala-elements">
+        <button id="escalabtn" onclick="crearEscala()">Agregar</button>
+    </div>
+</div>
 <hr>
 <button id="Deletecampo" onclick="removeLastInput()">Quitar Elemento</button>
 <hr>
@@ -35,8 +42,42 @@
     <input type="hidden" name="Pregunta" id="campoOculto1" value="0">
     <input type="hidden" name="Seleccion" id="campoOculto2" value="0">
     <input type="hidden" name="Escala" id="campoOculto3" value="0">
+    <hr>
+    <h3>Usuarios:</h3>
+    <select id="userSelect" name="userSelect" width="300" style="width: 350px" size="8" multiple></select>
+    <hr>
     <input type="submit" value="Guardar" onclick="check();cambiarValor()">
 </form>
 
+
 </body>
+
+<script>
+    $(document).ready(function() {
+        // Cargar opciones usando AJAX cuando la página se carga
+        loadOptions();
+
+        function loadOptions() {
+            $.ajax({
+                url: '/alluser', // Ruta en el servidor para obtener los colores
+                method: 'GET',
+                success: function(data) {
+                    // Agregar opciones al elemento select
+                    var userSelect = $('#userSelect');
+                    userSelect.empty(); // Limpiar opciones actuales
+
+                    data.forEach(function(color) {
+                        userSelect.append($('<option>', {
+                            value: color,
+                            text: color
+                        }));
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al cargar colores:', error);
+                }
+            });
+        }
+    });
+</script>
 </html>
